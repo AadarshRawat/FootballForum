@@ -1,0 +1,15 @@
+{% extends 'app/main.html' %}
+
+{% block content  %}
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Submit">
+
+        </form>
+    
+
+    </div>
+    
+
+{% endblock content %}

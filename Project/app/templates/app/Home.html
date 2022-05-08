@@ -4,10 +4,13 @@
 
 <div>
     <div>
+        <a href="{% url 'create-room' %}">Create Room</a>
         {% for room in room %}
-            <hr>
+        <span>@{{room.host.username}}</span>
+           
         <h1>{{room.id}}-----> <a href="{% url 'room' room.id %}">{{room.name}}</a>  </h1> 
-
+        <h3>{{room.topic}}</h3>
+            <hr>
         {% endfor %}
     </div>
 
