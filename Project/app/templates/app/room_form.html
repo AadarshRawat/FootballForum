@@ -1,15 +1,17 @@
 {% extends 'app/main.html' %}
 
 {% block content  %}
-    <div>
-        <form method="POST">
-            {% csrf_token %}
-            <input type="submit" value="Submit">
+<div><div>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Submit">
 
-        </form>
-    
+    </form>
 
-    </div>
+
+</div>
+</div>
     
 
 {% endblock content %}
