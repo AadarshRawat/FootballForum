@@ -76,13 +76,12 @@ def Home(request):
     
     topics=Topic.objects.all()
     room_count=room.count()
+    room_messages=Message.objects.filter(Q(room__topic__name__icontains=q))
     print('------------------------DATA---------------------------------',room)
-    return render(request,'app/Home.html',{'room':room,'topics':topics,'room_count':room_count})
+    return render(request,'app/Home.html',{'room':room,'topics':topics,'room_count':room_count,'room_messages':room_messages})
 
 def Rooms(request,pk):
     data=Room.objects.get(id=pk)
-    # room_messages=data.message_set.all() 
-    # print(room_messages)
     room_messages=Message.objects.filter(room=data)
     participants=data.participants.all()
     print(room_messages)
@@ -110,7 +109,9 @@ def createRoom(request):
         print(request.POST)
         form=RoomForm(request.POST)
         if form.is_valid():
-            form.save()
+            room=form.save(commit=False)
+            room.host=request.user
+            room.save()
             return redirect('home')
 
     context={'form':form}
@@ -149,3 +150,12 @@ def deleteMessage(request,pk):
         message.delete()
         return redirect('home')
     return render(request,'app/delete.html',{'room':message})
+
+
+def userProfile(request,pk):
+    user=User.objects.get(id=pk)
+    room=user.room_set.all()
+    messages=user.message_set.all()
+    topics=Topic.objects.all()
+    context={'user':user,'room':room,'room_messages':messages,'topics':topics}
+    return render(request,'app/profile.html',context)
