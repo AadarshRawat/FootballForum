@@ -100,7 +100,7 @@ def Rooms(request,pk):
 
 def userProfile(request):
     return render(request,'app/profile.html')
-
+#1
 @login_required(login_url='login')
 def createRoom(request):
     form = RoomForm()
@@ -129,7 +129,7 @@ def updateMessage(request,pk):
         message.save()
         return redirect('home')
     return render(request,'app/update-message.html',{'formmessage':formmessage})
-
+#2
 @login_required(login_url='login')
 def updateRoom(request,pk):
     room=Room.objects.get(id=pk)
