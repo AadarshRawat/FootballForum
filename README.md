@@ -50,7 +50,7 @@ python manage.py runserver
 
 ## Project Preview:
 <figure>
-<img src="https://github.com/AadarshRawat/AadarshRawat/blob/master/assests/HomePage.png" width="40%" height="40%"/>
+<img src="https://github.com/AadarshRawat/AadarshRawat/blob/master/assests/HomePage2.png" width="40%" height="40%"/>
 <figcaption align = "center"><b>Fig.1 - Home Page of Forum</b></figcaption>
 </figure>
 
